@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id = "label">количество пунктов: 0</button>
+    <button id = "labelOfSum">сумма калорий: 0</button>
+    <button id = "clearAll" onclick="clearAll()">очистить</button>
+    <button id = "download" onclick="downloadToCSV(this)">сохранить в файл</button>
+    <input type="file" id="file">
+    <button id="readFile" onclick="readFile()">загрузить</button>
+    <form id = "main-form" onsubmit="return checkForm(this)" method="POST">
+        <input type="text" required placeholder="введите название" name="name" id = "name">
+        <input type="text" class="ss" placeholder="количество калорий" name="col" id="col" required>
+        <input type="submit" name="submit" value="добавить">
+    </form>
+    <ul class="list">
+
+    </ul>
+    <script src="js/main.js"></script>
+</body>
+</html>
