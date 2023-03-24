@@ -1,6 +1,7 @@
 var number = 0;
 var mass = [];
 var sumOfCol = 0;
+var colLimit = 0;
 
 function readFile() {
     let file = document.getElementById('file').files[0];
@@ -45,9 +46,12 @@ function downloadToCSV(el) {
 function changeLabels() {
     var label = document.getElementById('label');
     var labelOfSUm = document.getElementById('labelOfSum');
+    var limit = document.getElementById('limitButton');
+
     number++;
     label.innerHTML = "количество пунктов: " + number;
     labelOfSUm.innerHTML = " сумма калорий: " + sumOfCol;
+    limit.innerHTML = "доступно калорий: " + String(colLimit - sumOfCol);
 }
 
 function appendCol() {
@@ -61,6 +65,7 @@ function clearAll() {
     mass = []
     sumOfCol = 0;
     changeLabels();
+
     let li = document.querySelector("ul.list > li:last-child");
     while (li != null) {
         li.remove();
@@ -73,13 +78,25 @@ function checkForm(el) {
     // var el = document.getElementById('main-form');
     var name = el.name.value;
     var count = el.col.value;
-    mass[number] = []
-    mass[number][0] = name
-    mass[number][1] = Number(count)
-    sumOfCol += Number(count)
+    mass[number] = [];
+    mass[number][0] = name;
+    mass[number][1] = Number(count);
+    sumOfCol += Number(count);
     changeLabels();
     appendCol();
     
+
+    return false
+}
+
+function setLimit(el) {
+    // var el = document.getElementById('main-form');
+    var limit = el.limit.value;
+    colLimit = Number(limit)
+    
+    var label = document.getElementById('limitButton');
+    
+    label.innerHTML = "доступно калорий: " + String(limit - sumOfCol);
 
     return false
 }
