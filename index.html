@@ -13,6 +13,11 @@
     <button id = "download" onclick="downloadToCSV(this)">сохранить в файл</button>
     <input type="file" id="file">
     <button id="readFile" onclick="readFile()">загрузить</button>
+    <form id = "second-form" onsubmit="return setLimit(this)" method="POST">
+        <input type="number" class="limit" placeholder="установить лимит" name="limit" id="limit" required>
+        <input type="submit" name="submit" value="установить">
+    </form>
+    <button id = "limitButton">лимит не установлен</button>
     <form id = "main-form" onsubmit="return checkForm(this)" method="POST">
         <input type="text" required placeholder="введите название" name="name" id = "name">
         <input type="text" class="ss" placeholder="количество калорий" name="col" id="col" required>
